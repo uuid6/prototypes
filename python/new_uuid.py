@@ -191,7 +191,8 @@ def uuid8(epochType="unix", timestampLength=64, customNode=None, devDebugs=False
         if epochType.lower() == "gregorian":
             raise ValueError('gregorian epoch cannot be used with 48-bit timestamp, change to unix')
         binaryTimestamp = f'{timestamp:064b}'  # 64 1/0s
-        time_high = binaryTimestamp[:48]  # Most significant 48
+        # time_high = binaryTimestamp[:48]  # Most significant 48
+        time_high = binaryTimestamp[-48:]  # Least significant 48
         time_msb_low = f'{int(0):012b}'  # 12 0s
     elif timestampLength == 64:  # Trimmed to 60 bits
         timestamp = time.time_ns()
@@ -220,12 +221,6 @@ def uuid8(epochType="unix", timestampLength=64, customNode=None, devDebugs=False
             print("Sequence: Incrementing Sequence to {0}".format(str(sequenceCounter)))
     if timestamp > _last_timestamp:
         sequenceCounter = 0
-        # Bug:
-        # When using 48-bit trimmed NS timestamp, if two sequence 0s happen to occur in a row, random is tiebreaker.
-        # Relying on random can make the UUID integer smaller break sort on that UUID.
-        # Quick Fix, just check if last sequence was the same, then increment
-        if _last_sequence == 0 and timestampLength == 48:
-            sequenceCounter = _last_sequence + 1
         if devDebugs == True:
             print("Sequence: Setting to {0}".format(str(sequenceCounter)))
 

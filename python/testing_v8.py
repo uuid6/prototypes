@@ -13,9 +13,9 @@ Testing:
 
 # Global Variables
 epochType = "unix" # Unix or Gregorian
-timestampLength = 48 # Integer Values: 32, 48, 64
-customNode = 0 # Set integer for custom node value
-devDebugs = True # True to view generation process
+timestampLength = 64 # Integer Values: 32, 48, 64
+customNode = None # Set integer for custom node value
+devDebugs = False # True to view generation process
 returnType = "hex" # String Values: bin, int, hex
 
 showUUIDs = False # True to view the generated UUID returnType and lists
