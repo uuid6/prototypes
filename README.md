@@ -1,7 +1,22 @@
-# prototypes
+# Prototypes
 Draft Prototypes and Tests for UUIDv6 and beyond
 
-| Language | UUIDv6 | UUIDv7 | UUIDv8 | Current Draft |
-|----------|--------|--------|--------|---------------|
-| Python   | Yes    | No     | Yes    | 01            |
+| Name                                                                              | Language   | UUIDv6 | UUIDv7 | UUIDv8 | RFC/Draft                                                                   | Comments                                      |
+|-----------------------------------------------------------------------------------|------------|--------|--------|--------|-----------------------------------------------------------------------------|-----------------------------------------------|
+| [uuid6/prototypes/python](https://github.com/uuid6/prototypes/tree/main/python)   | Python     | Yes    | No     | Yes    | [01](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-01) |                                               |
+| [jdknezek/uuid6-zig](https://github.com/jdknezek/uuid6-zig)                       | Zig        | Yes    | Yes    | No     | [01](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-01) |                                               |
+| [mikemix/php-uuid-v6](https://github.com/mikemix/php-uuid-v6)                     | PHP        | Yes    | No     | No     | [0x](http://gh.peabody.io/uuidv6/)                                          | Based on Pre-RFC Draft                        |
+| [kurttheviking/uuid-with-v6-js](https://github.com/kurttheviking/uuid-with-v6-js) | JavaScript | Yes    | No     | No     | [0x](http://gh.peabody.io/uuidv6/)                                          | Based on Pre-RFC Draft                        |
+| [bradleypeabody/gouuidv6](https://github.com/bradleypeabody/gouuidv6)             | GO         | Yes    | No     | No     | [0x](http://gh.peabody.io/uuidv6/)                                          | Based on Pre-RFC Draft                        |
 
+*Note: UUIDv8 prototypes will likely vary among implementations*
+
+# Contributing
+Create a repository and open a Pull Request to have this table updated.
+
+Please include:
+- Link to repository
+- Programming language used
+- List UUIDvX versions supported in repository
+- Define RFC version you are implementing (Preferably the [latest available](https://datatracker.ietf.org/doc/draft-peabody-dispatch-new-uuid-format/))
+- Any comments/notes to include
