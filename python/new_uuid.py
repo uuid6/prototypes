@@ -142,6 +142,75 @@ def uuid6(clock_seq=None, devDebugs=False, returnType="hex"):
     if returnType.lower() == "hex":
         return UUIDv6_formatted
 
+def uuid7(devDebugs=False, returnType="hex"):
+    """Generates a 128-bit version 7 UUID with nanoseconds precision timestamp and random node
+
+    example: 060a859e-e10d-7d37-8720-52c692c8990f
+
+    format: second|subsecond|node
+
+    :param devDebugs: True, False
+    :param returnType: bin, int, hex
+    :return: bin, int, hex
+    """
+    
+    total_bits=128
+    version_bits = 4
+    variant_bits = 2
+
+    sec_bits=36
+    subsec_bits=30
+    
+    subsec_decimal_digits=9
+    subsec_decimal_divisor = (10 ** subsec_decimal_digits)
+    
+    nanoseconds = time.time_ns()
+    
+    integer_part = int(nanoseconds / subsec_decimal_divisor)
+    fractional_part = round((nanoseconds % subsec_decimal_divisor) / subsec_decimal_divisor, subsec_decimal_digits)
+    
+    sec = integer_part
+    subsec = round(fractional_part * (2 ** subsec_bits))
+    
+    node_bits = (total_bits - version_bits - variant_bits - sec_bits - subsec_bits)
+    
+    # join seconds, subseconds and node
+    uuid_sec = sec << (subsec_bits + node_bits)
+    uuid_subsec = subsec << node_bits
+    uuid_node = random.randint(0, (2 ** node_bits))
+    uuid_int = uuid_sec | uuid_subsec | uuid_node # 122 bits
+    
+    # apply version and variant
+    SLICE_MASK_0 = 0xffffffffffff00000000000000000000
+    SLICE_MASK_1 = 0x0000000000000fff0000000000000000
+    SLICE_MASK_2 = 0x00000000000000003fffffffffffffff
+    slice_mask_0 = SLICE_MASK_0 >> (version_bits + variant_bits)
+    slice_mask_1 = SLICE_MASK_1 >> (variant_bits)
+    slice_mask_2 = SLICE_MASK_2
+    slice_0 = (uuid_int & slice_mask_0) << (version_bits + variant_bits)
+    slice_1 = (uuid_int & slice_mask_1) << (variant_bits)
+    slice_2 = (uuid_int & slice_mask_2)
+    UUIDv7_int = slice_0 | slice_1 | slice_2
+    UUIDv7_int = UUIDv7_int & 0xffffffffffff0fff3fffffffffffffff # clear version and variant
+    UUIDv7_int = UUIDv7_int | 0x00000000000070008000000000000000 # apply version and variant
+    
+    UUIDv7_bin = bin(UUIDv7_int)
+    UUIDv7_hex = hex(UUIDv7_int)[2:].zfill(32)
+    UUIDv7_formatted = '-'.join([UUIDv7_hex[:8], UUIDv7_hex[8:12], UUIDv7_hex[12:16], UUIDv7_hex[16:20], UUIDv7_hex[20:32]])
+    
+    if devDebugs == True:
+        print("UUIDv7 Bin: {0} (len: {1})".format(UUIDv7_bin, len(UUIDv7_bin)))
+        print("UUIDv7 Int: " + str(UUIDv7_int))
+        print("UUIDv7 Hex: " + UUIDv7_formatted)
+        print("\n")
+    
+    if returnType.lower() == "bin":
+        return UUIDv7_bin
+    if returnType.lower() == "int":
+        return UUIDv7_int
+    if returnType.lower() == "hex":
+        return UUIDv7_formatted
+
 def uuid8(epochType="unix", timestampLength=64, customNode=None, devDebugs=False, returnType="hex"):
     """ Generates a 128-bit version 8 UUID with variable length timestamp, sequence and node.
 
