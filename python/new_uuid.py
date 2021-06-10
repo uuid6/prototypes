@@ -7,7 +7,7 @@ _last_uuid_int = 0
 _last_sequence = None
 uuidVariant = '10'
 
-def uuid1(clock_seq=None, devDebugs=False, returnType="hex"):
+def uuid1(devDebugs=False, returnType="hex"):
     """Generates a 128-bit version 1 UUID with 100-ns timestamp RFC 4122 Epoch and random node
 
     example: dc38cdf9-22fe-11eb-a595-05480e4ca6cb
@@ -19,7 +19,6 @@ def uuid1(clock_seq=None, devDebugs=False, returnType="hex"):
 
     Test Decode here: https://www.uuidtools.com/decode
 
-    :param clock_seq: Set value to define manually
     :param devDebugs: True, False
     :param returnType: bin, int, hex
     :return: bin, int, hex
@@ -48,14 +47,13 @@ def uuid1(clock_seq=None, devDebugs=False, returnType="hex"):
     # Set these two before moving on
     _last_timestamp = timestamp
     _last_sequence = int(sequenceCounter)
-    clock_seq = sequenceCounter
 
     time_low = timestamp & 0xffffffff
     time_mid = (timestamp >> 32) & 0xffff
     time_hi_version = (timestamp >> 48) & 0x0fff
     time_hi_version = int(version + f'{time_hi_version:012b}', 2)
-    clock_seq_low = clock_seq & 0xff
-    clock_seq_hi_variant = (clock_seq >> 8) & 0x3f
+    clock_seq_low = sequenceCounter & 0xff
+    clock_seq_hi_variant = (sequenceCounter >> 8) & 0x3f
     clock_seq_hi_variant = int(uuidVariant + f'{clock_seq_hi_variant:08b}'[-6:], 2)
     node = random.getrandbits(48)  # Instead of MAC
 
@@ -86,14 +84,13 @@ def uuid1(clock_seq=None, devDebugs=False, returnType="hex"):
     return UUIDv1_formatted
 
 
-def uuid6(clock_seq=None, devDebugs=False, returnType="hex"):
+def uuid6(devDebugs=False, returnType="hex"):
     """Generates a 128-bit version 6 UUID with 100-ns timestamp RFC 4122 Epoch without re-ordering bits
 
     example: 1eb22fe4-3f0c-62b1-a88c-8dc55231702f
 
     format: time_high|time_mid|version|time_low|variant|clock_seq_high|clock_seq_low|node
 
-    :param clock_seq: Set value to define manually
     :param devDebugs: True, False
     :param returnType: bin, int, hex
     :return: bin, int, hex
@@ -124,7 +121,6 @@ def uuid6(clock_seq=None, devDebugs=False, returnType="hex"):
     # Set these two before moving on
     _last_timestamp = timestamp
     _last_sequence = int(sequenceCounter)
-    clock_seq = sequenceCounter
 
     # Start Changes
     new_time_high_mid = f'{timestamp:060b}'[:48]  # most-sig 48 time
@@ -135,8 +131,8 @@ def uuid6(clock_seq=None, devDebugs=False, returnType="hex"):
     time_hi_version = int(new_time_low_version, 2)
     # End Changes
 
-    clock_seq_low = clock_seq & 0xff
-    clock_seq_hi_variant = (clock_seq >> 8) & 0x3f
+    clock_seq_low = sequenceCounter & 0xff
+    clock_seq_hi_variant = (sequenceCounter >> 8) & 0x3f
     clock_seq_hi_variant = int(uuidVariant + f'{clock_seq_hi_variant:08b}'[-6:], 2)
     node = random.getrandbits(48)
 

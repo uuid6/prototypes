@@ -22,8 +22,8 @@ def v6Tests(showUUIDs):
     testList = []
     masterDict = {}
     while counter < 1000:
-        # UUIDv6 = new_uuid.uuid1(clock_seq, devDebugs, returnType)
-        UUIDv6 = new_uuid.uuid6(clock_seq, devDebugs, returnType)
+        # UUIDv6 = new_uuid.uuid1(devDebugs, returnType)
+        UUIDv6 = new_uuid.uuid6(devDebugs, returnType)
         testList.append(UUIDv6)
         masterDict[UUIDv6] = counter
         counter += 1
