@@ -174,7 +174,7 @@ def uuid6(clock_seq=None, devDebugs=False, returnType="hex"):
 def uuid7(devDebugs=False, returnType="hex"):
     """Generates a 128-bit version 7 UUID with nanoseconds precision timestamp and random node
 
-    example: 60c240d6-e757-d24a-806f-82c688cdfd7
+    example: 60c26bbe-0728-7f46-9602-bcf7423f3cb7
 
     format: unixts|subsec_a|version|subsec_b|variant|subsec_seq_node
 
@@ -221,7 +221,8 @@ def uuid7(devDebugs=False, returnType="hex"):
 
     ### Binary Conversions
     ### Need subsec_a (12 bits), subsec_b (12-bits), and subsec_c (leftover bits starting subsec_seq_node)
-    unixts = f'{sec:036b}'
+    unixts = f'{sec:032b}'
+    unixts = unixts + "0000" # Pad end with 4 zeros to get 36-bit
     subsec_binary = f'{subsec:030b}'
     subsec_a =  subsec_binary[:12] # Upper 12
     subsec_b_c = subsec_binary[-18:] # Lower 18

@@ -17,7 +17,7 @@ returnType = "hex" # String Values: bin, int, hex
 
 showUUIDs = False # True to view the generated UUID returnType and lists
 
-def v8Tests(showUUIDs):
+def v7Tests(showUUIDs):
     counter = 0
     testList = []
     masterDict = {}
@@ -57,4 +57,4 @@ def v8Tests(showUUIDs):
     if failCount == 0:
         print("+ No Failures Observed")
 
-v8Tests(showUUIDs)
+v7Tests(showUUIDs)
