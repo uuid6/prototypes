@@ -15,6 +15,7 @@ def uuid1(clock_seq=None, devDebugs=False, returnType="hex"):
     format: time_low|time_mid|version|time_high|variant|clock_seq_high|clock_seq_low|node
 
     Adapted from https://github.com/python/cpython/blob/3.9/Lib/uuid.py
+    Fixed Clock Sequence to be RFC4122 Compliant as per https://datatracker.ietf.org/doc/html/rfc4122#section-4.2.1
 
     Test Decode here: https://www.uuidtools.com/decode
 
@@ -32,11 +33,22 @@ def uuid1(clock_seq=None, devDebugs=False, returnType="hex"):
     # UUID epoch 1582-10-15 00:00:00 and the Unix epoch 1970-01-01 00:00:00.
     timestamp = (nanoseconds // 100) + 0x01b21dd213814000
 
-    if _last_timestamp is not None and timestamp <= _last_timestamp:
-        timestamp = _last_timestamp + 1
+    ### Fixing Clock Sequence Counter
+    # Sequence starts at 0, increments if timestamp is the same, the sequence increments by 1
+    # Resets if timestamp int is larger than _last_timestamp used for UUID generation
+    if timestamp <= _last_timestamp:
+        sequenceCounter = int(sequenceCounter) + 1
+        if devDebugs == True:
+            print("Sequence: Incrementing Sequence to {0}".format(str(sequenceCounter)))
+    if timestamp > _last_timestamp:
+        sequenceCounter = 0
+        if devDebugs == True:
+            print("Sequence: Setting to {0}".format(str(sequenceCounter)))
+
+    # Set these two before moving on
     _last_timestamp = timestamp
-    if clock_seq is None:
-        clock_seq = random.getrandbits(14) # instead of stable storage
+    _last_sequence = int(sequenceCounter)
+    clock_seq = sequenceCounter
 
     time_low = timestamp & 0xffffffff
     time_mid = (timestamp >> 32) & 0xffff
@@ -45,18 +57,19 @@ def uuid1(clock_seq=None, devDebugs=False, returnType="hex"):
     clock_seq_low = clock_seq & 0xff
     clock_seq_hi_variant = (clock_seq >> 8) & 0x3f
     clock_seq_hi_variant = int(uuidVariant + f'{clock_seq_hi_variant:08b}'[-6:], 2)
-    node = random.getrandbits(48) # Instead of MAC
+    node = random.getrandbits(48)  # Instead of MAC
 
     UUIDv1_bin = "{0}{1}{2}{3}{4}{5}".format(f'{time_low:032b}',
-                                            f'{time_mid:016b}',
-                                            f'{time_hi_version:016b}',
-                                            f'{clock_seq_hi_variant:08b}',
-                                            f'{clock_seq_low:08b}',
-                                            f'{node:048b}')
+                                             f'{time_mid:016b}',
+                                             f'{time_hi_version:016b}',
+                                             f'{clock_seq_hi_variant:08b}',
+                                             f'{clock_seq_low:08b}',
+                                             f'{node:048b}')
 
     UUIDv1_int = int(UUIDv1_bin, 2)
     UUIDv1_hex = hex(int(UUIDv1_bin, 2))[2:]
-    UUIDv1_formatted = '-'.join([UUIDv1_hex[:8], UUIDv1_hex[8:12], UUIDv1_hex[12:16], UUIDv1_hex[16:20], UUIDv1_hex[20:32]])
+    UUIDv1_formatted = '-'.join(
+        [UUIDv1_hex[:8], UUIDv1_hex[8:12], UUIDv1_hex[12:16], UUIDv1_hex[16:20], UUIDv1_hex[20:32]])
 
     if devDebugs:
         print("UUIDv1 Con: {0}|{1}|{2}|{3}|{4}|{5}".format(f'{time_low:032b}',
@@ -72,6 +85,7 @@ def uuid1(clock_seq=None, devDebugs=False, returnType="hex"):
 
     return UUIDv1_formatted
 
+
 def uuid6(clock_seq=None, devDebugs=False, returnType="hex"):
     """Generates a 128-bit version 6 UUID with 100-ns timestamp RFC 4122 Epoch without re-ordering bits
 
@@ -86,6 +100,8 @@ def uuid6(clock_seq=None, devDebugs=False, returnType="hex"):
     """
 
     global _last_timestamp
+    global _last_sequence
+    global sequenceCounter
     version = "0110"
 
     nanoseconds = time.time_ns()
@@ -93,15 +109,26 @@ def uuid6(clock_seq=None, devDebugs=False, returnType="hex"):
     # UUID epoch 1582-10-15 00:00:00 and the Unix epoch 1970-01-01 00:00:00.
     timestamp = (nanoseconds // 100) + 0x01b21dd213814000
 
-    if _last_timestamp is not None and timestamp <= _last_timestamp:
-        timestamp = _last_timestamp + 1
+    ### Fixing Clock Sequence Counter
+    # Sequence starts at 0, increments if timestamp is the same, the sequence increments by 1
+    # Resets if timestamp int is larger than _last_timestamp used for UUID generation
+    if timestamp <= _last_timestamp:
+        sequenceCounter = int(sequenceCounter) + 1
+        if devDebugs == True:
+            print("Sequence: Incrementing Sequence to {0}".format(str(sequenceCounter)))
+    if timestamp > _last_timestamp:
+        sequenceCounter = 0
+        if devDebugs == True:
+            print("Sequence: Setting to {0}".format(str(sequenceCounter)))
+
+    # Set these two before moving on
     _last_timestamp = timestamp
-    if clock_seq is None:
-        clock_seq = random.getrandbits(14) # instead of stable storage
+    _last_sequence = int(sequenceCounter)
+    clock_seq = sequenceCounter
 
     # Start Changes
-    new_time_high_mid = f'{timestamp:060b}'[:48] # most-sig 48 time
-    new_time_low_version = version + f'{timestamp:060b}'[-12:] # most-sig version + least-sig 12 time
+    new_time_high_mid = f'{timestamp:060b}'[:48]  # most-sig 48 time
+    new_time_low_version = version + f'{timestamp:060b}'[-12:]  # most-sig version + least-sig 12 time
     # Convert to fit the old UUIDv1 variable naming
     time_low = int(new_time_high_mid[:32], 2)
     time_mid = int(new_time_high_mid[-16:], 2)
@@ -121,7 +148,8 @@ def uuid6(clock_seq=None, devDebugs=False, returnType="hex"):
                                              f'{node:048b}')
     UUIDv6_int = int(UUIDv6_bin, 2)
     UUIDv6_hex = hex(int(UUIDv6_bin, 2))[2:]
-    UUIDv6_formatted = '-'.join([UUIDv6_hex[:8], UUIDv6_hex[8:12], UUIDv6_hex[12:16], UUIDv6_hex[16:20], UUIDv6_hex[20:32]])
+    UUIDv6_formatted = '-'.join(
+        [UUIDv6_hex[:8], UUIDv6_hex[8:12], UUIDv6_hex[12:16], UUIDv6_hex[16:20], UUIDv6_hex[20:32]])
 
     if devDebugs:
         print("UUIDv6 Con: {0}|{1}|{2}|{3}|{4}|{5}".format(f'{time_low:032b}',
@@ -142,74 +170,125 @@ def uuid6(clock_seq=None, devDebugs=False, returnType="hex"):
     if returnType.lower() == "hex":
         return UUIDv6_formatted
 
+
 def uuid7(devDebugs=False, returnType="hex"):
     """Generates a 128-bit version 7 UUID with nanoseconds precision timestamp and random node
 
-    example: 060a859e-e10d-7d37-8720-52c692c8990f
+    example: 60c240d6-e757-d24a-806f-82c688cdfd7
 
-    format: second|subsecond|node
+    format: unixts|subsec_a|version|subsec_b|variant|subsec_seq_node
 
     :param devDebugs: True, False
     :param returnType: bin, int, hex
     :return: bin, int, hex
     """
-    
-    total_bits=128
-    version_bits = 4
-    variant_bits = 2
 
-    sec_bits=36
-    subsec_bits=30
-    
-    subsec_decimal_digits=9
-    subsec_decimal_divisor = (10 ** subsec_decimal_digits)
-    
-    nanoseconds = time.time_ns()
-    
-    integer_part = int(nanoseconds / subsec_decimal_divisor)
-    fractional_part = round((nanoseconds % subsec_decimal_divisor) / subsec_decimal_divisor, subsec_decimal_digits)
-    
+    global _last_timestamp
+    global _last_uuid_int
+    global _last_sequence
+    global sequenceCounter
+    global uuidVariant
+    uuidVersion = '0111'  # ver 7
+    sec_bits = 36 # unixts at second precision
+    subsec_bits = 30 # Enough to represent NS
+    version_bits = 4 # '0111' for ver 7
+    variant_bits = 2 # '10' Static for UUID
+    sequence_bits = 8 # Enough for 256 UUIDs per NS
+    node_bits = (128 - sec_bits - subsec_bits - version_bits - variant_bits - sequence_bits) # 48
+
+    ### Timestamp Work
+    # Produces unix epoch with nanosecond precision
+    timestamp = time.time_ns() # Produces 64-bit NS timestamp
+    # Subsecond Math
+    subsec_decimal_digits = 9 # Last 9 digits of are subsection precision
+    subsec_decimal_divisor = (10 ** subsec_decimal_digits) # 1000000000 NS in 1 second
+    integer_part = int(timestamp / subsec_decimal_divisor) # Get seconds
     sec = integer_part
-    subsec = round(fractional_part * (2 ** subsec_bits))
-    
-    node_bits = (total_bits - version_bits - variant_bits - sec_bits - subsec_bits)
-    
-    # join seconds, subseconds and node
-    uuid_sec = sec << (subsec_bits + node_bits)
-    uuid_subsec = subsec << node_bits
-    uuid_node = random.randint(0, (2 ** node_bits))
-    uuid_int = uuid_sec | uuid_subsec | uuid_node # 122 bits
-    
-    # apply version and variant
-    SLICE_MASK_0 = 0xffffffffffff00000000000000000000
-    SLICE_MASK_1 = 0x0000000000000fff0000000000000000
-    SLICE_MASK_2 = 0x00000000000000003fffffffffffffff
-    slice_mask_0 = SLICE_MASK_0 >> (version_bits + variant_bits)
-    slice_mask_1 = SLICE_MASK_1 >> (variant_bits)
-    slice_mask_2 = SLICE_MASK_2
-    slice_0 = (uuid_int & slice_mask_0) << (version_bits + variant_bits)
-    slice_1 = (uuid_int & slice_mask_1) << (variant_bits)
-    slice_2 = (uuid_int & slice_mask_2)
-    UUIDv7_int = slice_0 | slice_1 | slice_2
-    UUIDv7_int = UUIDv7_int & 0xffffffffffff0fff3fffffffffffffff # clear version and variant
-    UUIDv7_int = UUIDv7_int | 0x00000000000070008000000000000000 # apply version and variant
-    
-    UUIDv7_bin = bin(UUIDv7_int)
-    UUIDv7_hex = hex(UUIDv7_int)[2:].zfill(32)
-    UUIDv7_formatted = '-'.join([UUIDv7_hex[:8], UUIDv7_hex[8:12], UUIDv7_hex[12:16], UUIDv7_hex[16:20], UUIDv7_hex[20:32]])
-    
+    # Conversion to decimal
+    fractional_part = round((timestamp % subsec_decimal_divisor) / subsec_decimal_divisor, subsec_decimal_digits)
+    subsec = round(fractional_part * (2 ** subsec_bits)) # Convert to 30 bit int, round
+
     if devDebugs == True:
+        print("Timestamp: " + str(timestamp))
+        print("Sec: " + str(sec))
+        print("Subsec Int: " + str(subsec))
+        print("Subsec Dec: " + "{0:.9f}".format(fractional_part)) # Print with trailing 0s
+        test_timestamp = str(sec) + str("{0:.9f}".format(fractional_part)[-9:]) # Concat and drop leading '0.'
+        if test_timestamp == str(timestamp): # Quick test for subsec math
+            print("Good subsec math")
+        else:
+            print("Bad Subsec Math")
+
+    ### Binary Conversions
+    ### Need subsec_a (12 bits), subsec_b (12-bits), and subsec_c (leftover bits starting subsec_seq_node)
+    unixts = f'{sec:036b}'
+    subsec_binary = f'{subsec:030b}'
+    subsec_a =  subsec_binary[:12] # Upper 12
+    subsec_b_c = subsec_binary[-18:] # Lower 18
+    subsec_b = subsec_b_c[:12] # Upper 12
+    subsec_c = subsec_binary[-6:] # Lower 6
+
+    ### Sequence Work
+    # Sequence starts at 0, increments if timestamp is the same, the sequence increments by 1
+    # Resets if timestamp int is larger than _last_timestamp used for UUID generation
+    # Will be 8 bits for NS timestamp
+    if timestamp <= _last_timestamp:
+        sequenceCounter = int(sequenceCounter) + 1
+        if devDebugs == True:
+            print("Sequence: Incrementing Sequence to {0}".format(str(sequenceCounter)))
+    if timestamp > _last_timestamp:
+        sequenceCounter = 0
+        if devDebugs == True:
+            print("Sequence: Setting to {0}".format(str(sequenceCounter)))
+
+    sequenceCounterBin = f'{sequenceCounter:08b}'
+
+    # Set these two before moving on
+    _last_timestamp = timestamp
+    _last_sequence = int(sequenceCounter)
+
+    ### Random Node Work
+    randomInt = random.getrandbits(node_bits)
+    randomBinary = f'{randomInt:048b}'
+
+    # Create subsec_seq_node
+    subsec_seq_node = subsec_c + sequenceCounterBin + randomBinary
+
+    ### Formatting Work
+    # Bin merge and Int creation
+    UUIDv7_bin = unixts + subsec_a + uuidVersion + subsec_b + uuidVariant + subsec_seq_node
+    UUIDv7_int = int(UUIDv7_bin, 2)
+    if devDebugs == True:  # Compare previous Int. Should always be higher
+        if UUIDv7_int < _last_uuid_int and _last_uuid_int != 0:
+            print("Error: UUID went Backwards!")
+            print("UUIDv7 Last: " + str(_last_uuid_int))
+            print("UUIDv7 Curr: " + str(UUIDv8_int))
+    _last_uuid_int = UUIDv7_int
+
+    # Convert Hex to Int then splice in dashes
+    UUIDv7_hex = hex(int(UUIDv7_bin, 2))[2:]
+    UUIDv7_formatted = '-'.join(
+        [UUIDv7_hex[:8], UUIDv7_hex[8:12], UUIDv7_hex[12:16], UUIDv7_hex[16:20], UUIDv7_hex[20:32]])
+
+    if devDebugs == True:
+        print("UUIDv7 Con: {0}|{1}|{2}|{3}|{4}|{5}".format(unixts,
+                                                           subsec_a,
+                                                           uuidVersion,
+                                                           subsec_b,
+                                                           uuidVariant,
+                                                           subsec_seq_node))
         print("UUIDv7 Bin: {0} (len: {1})".format(UUIDv7_bin, len(UUIDv7_bin)))
         print("UUIDv7 Int: " + str(UUIDv7_int))
         print("UUIDv7 Hex: " + UUIDv7_formatted)
         print("\n")
-    
+
     if returnType.lower() == "bin":
         return UUIDv7_bin
     if returnType.lower() == "int":
         return UUIDv7_int
     if returnType.lower() == "hex":
         return UUIDv7_formatted
+
 
 def uuid8(epochType="unix", timestampLength=64, customNode=None, devDebugs=False, returnType="hex"):
     """ Generates a 128-bit version 8 UUID with variable length timestamp, sequence and node.
@@ -231,14 +310,17 @@ def uuid8(epochType="unix", timestampLength=64, customNode=None, devDebugs=False
     global _last_sequence
     global sequenceCounter
     global uuidVariant
-    uuidVersion = '1000' # ver 8
+    uuidVersion = '1000'  # ver 8
 
     if devDebugs == None:
         devDebugs = False
 
     ### Timestamp Work
-    # These can likely be done better with bitwise operations
-    # If 48 or 64 bit precision required need time_ns()
+    # TIMESTAMP NOTE as per Draft 01
+    # If using Gregorian Timestamp please attempt to use UUIDv1 or UUIDv6
+    # If using Unix Timestamp please attempt to use UUIDv7
+    # This is a UUIDv8 demo detailing how one may format a UUIDv8 using well-known timestamps at different lengths
+    # Other timestamps types and usage will be variable among application implementations
     epochTypes = ["unix", "gregorian"]
     if epochType.lower() not in epochTypes:
         raise ValueError("Epoch must either be Unix or Gregorian")
@@ -307,7 +389,7 @@ def uuid8(epochType="unix", timestampLength=64, customNode=None, devDebugs=False
 
     ### Node Work
     if (timestampLength == 32) or (timestampLength == 48):
-        time_or_seq = sequenceCounterBin # Set to sequence
+        time_or_seq = sequenceCounterBin  # Set to sequence
         if customNode == None:
             randomInt = random.getrandbits(62)
             randomBinary = f'{randomInt:062b}'
@@ -323,14 +405,13 @@ def uuid8(epochType="unix", timestampLength=64, customNode=None, devDebugs=False
         else:
             node = sequenceCounterBin + f'{customNode:054b}'
 
-
     ### Formatting Work
     # Bin merge and Int creation
     # UUIDv8_bin = time_high + uuidVersion + time_msb_low + uuidVariant + sequenceCounterBin + randomBinary
     UUIDv8_bin = time_high + uuidVersion + time_or_seq + uuidVariant + node
     UUIDv8_int = int(UUIDv8_bin, 2)
-    if devDebugs == True: # Compare previous Int. Should always be higher
-        if UUIDv8_int < _last_uuid_int  and _last_uuid_int != 0:
+    if devDebugs == True:  # Compare previous Int. Should always be higher
+        if UUIDv8_int < _last_uuid_int and _last_uuid_int != 0:
             print("Error: UUID went Backwards!")
             print("UUIDv8 Last: " + str(_last_uuid_int))
             print("UUIDv8 Curr: " + str(UUIDv8_int))
@@ -338,7 +419,8 @@ def uuid8(epochType="unix", timestampLength=64, customNode=None, devDebugs=False
 
     # Convert Hex to Int then splice in dashes
     UUIDv8_hex = hex(int(UUIDv8_bin, 2))[2:]
-    UUIDv8_formatted = '-'.join([UUIDv8_hex[:8], UUIDv8_hex[8:12], UUIDv8_hex[12:16], UUIDv8_hex[16:20], UUIDv8_hex[20:32]])
+    UUIDv8_formatted = '-'.join(
+        [UUIDv8_hex[:8], UUIDv8_hex[8:12], UUIDv8_hex[12:16], UUIDv8_hex[16:20], UUIDv8_hex[20:32]])
 
     if devDebugs == True:
         print("UUIDv8 Con: {0}|{1}|{2}|{3}|{4}".format(time_high, uuidVersion, time_or_seq, uuidVariant, node))

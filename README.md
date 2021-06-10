@@ -1,13 +1,15 @@
 # Prototypes
 Draft Prototypes and Tests for UUIDv6 and beyond
 
-| Name                                                                              | Language   | UUIDv6 | UUIDv7 | UUIDv8 | RFC/Draft                                                                   | Comments                                      |
-|-----------------------------------------------------------------------------------|------------|--------|--------|--------|-----------------------------------------------------------------------------|-----------------------------------------------|
-| [uuid6/prototypes/python](https://github.com/uuid6/prototypes/tree/main/python)   | Python     | Yes    | Yes    | Yes    | [01](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-01) |                                               |
-| [jdknezek/uuid6-zig](https://github.com/jdknezek/uuid6-zig)                       | Zig        | Yes    | Yes    | No     | [01](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-01) |                                               |
-| [mikemix/php-uuid-v6](https://github.com/mikemix/php-uuid-v6)                     | PHP        | Yes    | No     | No     | [0x](http://gh.peabody.io/uuidv6/)                                          | Based on Pre-RFC Draft                        |
-| [kurttheviking/uuid-with-v6-js](https://github.com/kurttheviking/uuid-with-v6-js) | JavaScript | Yes    | No     | No     | [0x](http://gh.peabody.io/uuidv6/)                                          | Based on Pre-RFC Draft                        |
-| [bradleypeabody/gouuidv6](https://github.com/bradleypeabody/gouuidv6)             | GO         | Yes    | No     | No     | [0x](http://gh.peabody.io/uuidv6/)                                          | Based on Pre-RFC Draft                        |
+| Name                                                                                        | Language   | UUIDv6 | UUIDv7 | UUIDv8 | RFC/Draft                                                                   |
+|---------------------------------------------------------------------------------------------|------------|--------|--------|--------|-----------------------------------------------------------------------------|
+| [uuid6/prototypes/python](https://github.com/uuid6/prototypes/tree/main/python)             | Python     | Yes    | Yes    | Yes    | [01](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-01) |
+| [jdknezek/uuid6-zig](https://github.com/jdknezek/uuid6-zig)                                 | Zig        | Yes    | Yes    | No     | [01](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-01) |
+| [f4b6a3/uuid-creator](https://github.com/f4b6a3/uuid-creator)                               | Java       | Yes    | No     | No     | [01](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-01) |
+| [chrylis/time-based-uuid-reordering](https://github.com/chrylis/time-based-uuid-reordering) | Java       | Yes    | No     | No     | [01](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-01) |
+| [mikemix/php-uuid-v6](https://github.com/mikemix/php-uuid-v6)                               | PHP        | Yes    | No     | No     | [0x](http://gh.peabody.io/uuidv6/)                                          |
+| [kurttheviking/uuid-with-v6-js](https://github.com/kurttheviking/uuid-with-v6-js)           | JavaScript | Yes    | No     | No     | [0x](http://gh.peabody.io/uuidv6/)                                          |
+| [bradleypeabody/gouuidv6](https://github.com/bradleypeabody/gouuidv6)                       | GO         | Yes    | No     | No     | [0x](http://gh.peabody.io/uuidv6/)                                          |
 
 *Note: UUIDv8 prototypes will likely vary among implementations*
 
