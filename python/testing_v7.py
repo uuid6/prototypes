@@ -14,18 +14,17 @@ Testing:
 # Global Variables
 devDebugs = False # True to view generation process
 returnType = "hex" # String Values: bin, int, hex
-showUUIDs = False # True to view the generated UUID returnType and lists
-clock_seq = None # Set Clock Sequence
 
-def v6Tests(showUUIDs):
+showUUIDs = False # True to view the generated UUID returnType and lists
+
+def v7Tests(showUUIDs):
     counter = 0
     testList = []
     masterDict = {}
     while counter < 1000:
-        # UUIDv6 = new_uuid.uuid1(devDebugs, returnType)
-        UUIDv6 = new_uuid.uuid6(devDebugs, returnType)
-        testList.append(UUIDv6)
-        masterDict[UUIDv6] = counter
+        UUIDv7 = new_uuid.uuid7(devDebugs, returnType)
+        testList.append(UUIDv7)
+        masterDict[UUIDv7] = counter
         counter += 1
 
     if showUUIDs:
@@ -58,4 +57,4 @@ def v6Tests(showUUIDs):
     if failCount == 0:
         print("+ No Failures Observed")
 
-v6Tests(showUUIDs)
+v7Tests(showUUIDs)
