@@ -2,7 +2,10 @@ import time
 import random
 
 sequenceCounter = 0
-_last_timestamp = 0
+_last_v1timestamp = 0
+_last_v6timestamp = 0
+_last_v7timestamp = 0
+_last_v8timestamp = 0
 _last_uuid_int = 0
 _last_sequence = None
 uuidVariant = '10'
@@ -24,7 +27,7 @@ def uuid1(devDebugs=False, returnType="hex"):
     :return: bin, int, hex
     """
 
-    global _last_timestamp
+    global _last_v1timestamp
     version = "0001"
 
     nanoseconds = time.time_ns()
@@ -34,18 +37,18 @@ def uuid1(devDebugs=False, returnType="hex"):
 
     ### Fixing Clock Sequence Counter
     # Sequence starts at 0, increments if timestamp is the same, the sequence increments by 1
-    # Resets if timestamp int is larger than _last_timestamp used for UUID generation
-    if timestamp <= _last_timestamp:
+    # Resets if timestamp int is larger than _last_v1timestamp used for UUID generation
+    if timestamp <= _last_v1timestamp:
         sequenceCounter = int(sequenceCounter) + 1
         if devDebugs == True:
             print("Sequence: Incrementing Sequence to {0}".format(str(sequenceCounter)))
-    if timestamp > _last_timestamp:
+    if timestamp > _last_v1timestamp:
         sequenceCounter = 0
         if devDebugs == True:
             print("Sequence: Setting to {0}".format(str(sequenceCounter)))
 
     # Set these two before moving on
-    _last_timestamp = timestamp
+    _last_v1timestamp = timestamp
     _last_sequence = int(sequenceCounter)
 
     time_low = timestamp & 0xffffffff
@@ -96,7 +99,7 @@ def uuid6(devDebugs=False, returnType="hex"):
     :return: bin, int, hex
     """
 
-    global _last_timestamp
+    global _last_v6timestamp
     global _last_sequence
     global sequenceCounter
     version = "0110"
@@ -108,18 +111,18 @@ def uuid6(devDebugs=False, returnType="hex"):
 
     ### Fixing Clock Sequence Counter
     # Sequence starts at 0, increments if timestamp is the same, the sequence increments by 1
-    # Resets if timestamp int is larger than _last_timestamp used for UUID generation
-    if timestamp <= _last_timestamp:
+    # Resets if timestamp int is larger than _last_v6timestamp used for UUID generation
+    if timestamp <= _last_v6timestamp:
         sequenceCounter = int(sequenceCounter) + 1
         if devDebugs == True:
             print("Sequence: Incrementing Sequence to {0}".format(str(sequenceCounter)))
-    if timestamp > _last_timestamp:
+    if timestamp > _last_v6timestamp:
         sequenceCounter = 0
         if devDebugs == True:
             print("Sequence: Setting to {0}".format(str(sequenceCounter)))
 
     # Set these two before moving on
-    _last_timestamp = timestamp
+    _last_v6timestamp = timestamp
     _last_sequence = int(sequenceCounter)
 
     # Start Changes
@@ -179,7 +182,7 @@ def uuid7(devDebugs=False, returnType="hex"):
     :return: bin, int, hex
     """
 
-    global _last_timestamp
+    global _last_v7timestamp
     global _last_uuid_int
     global _last_sequence
     global sequenceCounter
@@ -227,13 +230,13 @@ def uuid7(devDebugs=False, returnType="hex"):
 
     ### Sequence Work
     # Sequence starts at 0, increments if timestamp is the same, the sequence increments by 1
-    # Resets if timestamp int is larger than _last_timestamp used for UUID generation
+    # Resets if timestamp int is larger than _last_v7timestamp used for UUID generation
     # Will be 8 bits for NS timestamp
-    if timestamp <= _last_timestamp:
+    if timestamp <= _last_v7timestamp:
         sequenceCounter = int(sequenceCounter) + 1
         if devDebugs == True:
             print("Sequence: Incrementing Sequence to {0}".format(str(sequenceCounter)))
-    if timestamp > _last_timestamp:
+    if timestamp > _last_v7timestamp:
         sequenceCounter = 0
         if devDebugs == True:
             print("Sequence: Setting to {0}".format(str(sequenceCounter)))
@@ -241,7 +244,7 @@ def uuid7(devDebugs=False, returnType="hex"):
     sequenceCounterBin = f'{sequenceCounter:08b}'
 
     # Set these two before moving on
-    _last_timestamp = timestamp
+    _last_v7timestamp = timestamp
     _last_sequence = int(sequenceCounter)
 
     ### Random Node Work
@@ -302,7 +305,7 @@ def uuid8(epochType="unix", timestampLength=64, customNode=None, devDebugs=False
     :return: bin, int, hex
     """
 
-    global _last_timestamp
+    global _last_v8timestamp
     global _last_uuid_int
     global _last_sequence
     global sequenceCounter
@@ -353,21 +356,21 @@ def uuid8(epochType="unix", timestampLength=64, customNode=None, devDebugs=False
         time_low = binaryTimestamp[-16:]  # Least significant 16
         time_msb_low = time_low[:12]  # Most significant 12 of those 16
 
-    if int(timestamp) < int(_last_timestamp) and _last_timestamp != 0:
+    if int(timestamp) < int(_last_v8timestamp) and _last_v8timestamp != 0:
         raise ValueError("Timestamp lower than previous known timestamp")
 
     if devDebugs == True:
         print("Curr Timestamp: {0}".format(int(timestamp)))
-        print("Last Timestamp: {0}".format(int(_last_timestamp)))
+        print("Last Timestamp: {0}".format(int(_last_v8timestamp)))
 
     ### Sequence Work
     # Sequence starts at 0, increments if timestamp is the same the sequence increments by 1
-    # Resets if timestamp int is larger than _last_timestamp used for UUID generation
-    if timestamp <= _last_timestamp:
+    # Resets if timestamp int is larger than _last_v8timestamp used for UUID generation
+    if timestamp <= _last_v8timestamp:
         sequenceCounter = int(sequenceCounter) + 1
         if devDebugs == True:
             print("Sequence: Incrementing Sequence to {0}".format(str(sequenceCounter)))
-    if timestamp > _last_timestamp:
+    if timestamp > _last_v8timestamp:
         sequenceCounter = 0
         if devDebugs == True:
             print("Sequence: Setting to {0}".format(str(sequenceCounter)))
@@ -381,7 +384,7 @@ def uuid8(epochType="unix", timestampLength=64, customNode=None, devDebugs=False
         sequenceCounterBin = f'{sequenceCounter:08b}'
 
     # Set these two before moving on
-    _last_timestamp = timestamp
+    _last_v8timestamp = timestamp
     _last_sequence = int(sequenceCounter)
 
     ### Node Work
