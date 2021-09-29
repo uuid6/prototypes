@@ -12,6 +12,7 @@ Draft Prototypes and Tests for UUIDv6 and beyond
 | [kurttheviking/uuid-with-v6-js](https://github.com/kurttheviking/uuid-with-v6-js)           | JavaScript | Yes    | No     | No     | [0x](http://gh.peabody.io/uuidv6/)                                          |
 | [bradleypeabody/gouuidv6](https://github.com/bradleypeabody/gouuidv6)                       | GO         | Yes    | No     | No     | [0x](http://gh.peabody.io/uuidv6/)                                          |
 | [sprql/uuid7-ruby](https://github.com/sprql/uuid7-ruby)                                     | Ruby       | No     | Yes    | No     | [01](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-01) |
+| [kjmph/UUID_v7_for_Postgres.sql](https://gist.github.com/kjmph/5bd772b2c2df145aa645b837da7eca74) | Postgres       | No     | Yes    | No     | [01](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-01) |
 
 *Note: UUIDv8 prototypes will likely vary among implementations*
 
