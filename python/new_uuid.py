@@ -262,7 +262,7 @@ def uuid7(devDebugs=False, returnType="hex"):
         if UUIDv7_int < _last_uuid_int and _last_uuid_int != 0:
             print("Error: UUID went Backwards!")
             print("UUIDv7 Last: " + str(_last_uuid_int))
-            print("UUIDv7 Curr: " + str(UUIDv8_int))
+            print("UUIDv7 Curr: " + str(UUIDv7_int))
     _last_uuid_int = UUIDv7_int
 
     # Convert Hex to Int then splice in dashes
