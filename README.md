@@ -17,6 +17,7 @@ Draft Prototypes and Tests for UUIDv6 and beyond
 | [kripod/uuidv7](https://github.com/kripod/uuidv7)                                           | TypeScript | No     | Yes    | No     | [02](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-02) |
 | [karwa/uniqueid](https://github.com/karwa/uniqueid)                                         | Swift      | Yes    | No     | No     | [02](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-02) |
 | [mareek/UUIDNext](https://github.com/mareek/UUIDNext)                                       | C#         | Yes    | Yes    | No     | [02](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-02) |
+| [oittaa/uuid-php](https://github.com/oittaa/uuid-php)                                       | PHP      | Yes    | Yes     | No     | [02](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-02) |
 
 *Note: UUIDv8 prototypes will likely vary among implementations*
 
