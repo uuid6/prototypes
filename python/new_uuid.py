@@ -173,7 +173,7 @@ def uuid6(devDebugs=False, returnType="hex"):
 def uuid7(devDebugs=False, returnType="hex"):
     """Generates a 128-bit version 7 UUID with nanoseconds precision timestamp and random node
 
-    example: 60c26bbe-0728-7f46-9602-bcf7423f3cb7
+    example: 061cdd23-93a0-73df-a200-6ff3e72d92e9
 
     format: unixts|subsec_a|version|subsec_b|variant|subsec_seq_node
 
@@ -220,8 +220,7 @@ def uuid7(devDebugs=False, returnType="hex"):
 
     ### Binary Conversions
     ### Need subsec_a (12 bits), subsec_b (12-bits), and subsec_c (leftover bits starting subsec_seq_node)
-    unixts = f'{sec:032b}'
-    unixts = unixts + "0000" # Pad end with 4 zeros to get 36-bit
+    unixts = f'{sec:036b}'
     subsec_binary = f'{subsec:030b}'
     subsec_a =  subsec_binary[:12] # Upper 12
     subsec_b_c = subsec_binary[-18:] # Lower 18
@@ -266,7 +265,7 @@ def uuid7(devDebugs=False, returnType="hex"):
     _last_uuid_int = UUIDv7_int
 
     # Convert Hex to Int then splice in dashes
-    UUIDv7_hex = hex(int(UUIDv7_bin, 2))[2:]
+    UUIDv7_hex = f'{UUIDv7_int:032x}' # int to hex
     UUIDv7_formatted = '-'.join(
         [UUIDv7_hex[:8], UUIDv7_hex[8:12], UUIDv7_hex[12:16], UUIDv7_hex[16:20], UUIDv7_hex[20:32]])
 
