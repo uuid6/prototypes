@@ -3,7 +3,7 @@ Draft Prototypes and Tests for UUIDv6 and beyond
 
 | Name                                                                                        | Language   | UUIDv6 | UUIDv7 | UUIDv8 | RFC/Draft                                                                   |
 |---------------------------------------------------------------------------------------------|------------|--------|--------|--------|-----------------------------------------------------------------------------|
-| [uuid6/prototypes/python](https://github.com/uuid6/prototypes/tree/main/python)             | Python     | Yes    | Yes    | Yes    | [01](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-01) |
+| [uuid6/prototypes/python](https://github.com/uuid6/prototypes/tree/main/python)             | Python     | Yes    | Yes    | Yes    | [02](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-02) |
 | [jdknezek/uuid6-zig](https://github.com/jdknezek/uuid6-zig)                                 | Zig        | Yes    | Yes    | No     | [01](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-01) |
 | [daegalus/uuid/tree/uuid6](https://github.com/Daegalus/dart-uuid/tree/uuidv6)               | Dart       | Yes    | Yes    | No     | [01](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-01) |
 | [f4b6a3/uuid-creator](https://github.com/f4b6a3/uuid-creator)                               | Java       | Yes    | No     | No     | [01](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-01) |
