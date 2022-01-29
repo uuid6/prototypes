@@ -18,6 +18,7 @@ Draft Prototypes and Tests for UUIDv6 and beyond
 | [karwa/uniqueid](https://github.com/karwa/uniqueid)                                         | Swift      | Yes    | No     | No     | [02](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-02) |
 | [mareek/UUIDNext](https://github.com/mareek/UUIDNext)                                       | C#         | Yes    | Yes    | No     | [02](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-02) |
 | [oittaa/uuid-php](https://github.com/oittaa/uuid-php)                                       | PHP      | Yes    | Yes     | No     | [02](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-02) |
+| [jakwings/uuid.sh](https://github.com/jakwings/uuid.sh)                                     | Shell      | Yes    | Yes    | Yes    | [02](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-02) |
 
 *Note: UUIDv8 prototypes will likely vary among implementations*
 
