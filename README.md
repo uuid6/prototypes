@@ -4,6 +4,7 @@ Draft Prototypes and Tests for UUIDv6 and beyond
 | Name                                                                                        | Language   | UUIDv6 | UUIDv7 | UUIDv8 | RFC/Draft                                                                   |
 |---------------------------------------------------------------------------------------------|------------|--------|--------|--------|-----------------------------------------------------------------------------|
 | [uuid6/prototypes/python](https://github.com/uuid6/prototypes/tree/main/python)             | Python     | Yes    | Yes    | Yes    | [02](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-02) |
+| [oittaa/uuid6-python](https://github.com/oittaa/uuid6-python)             | Python     | Yes    | Yes    | No    | [03](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-03) |
 | [jdknezek/uuid6-zig](https://github.com/jdknezek/uuid6-zig)                                 | Zig        | Yes    | Yes    | No     | [03](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-03) |
 | [daegalus/uuid/tree/uuid6](https://github.com/Daegalus/dart-uuid/tree/uuidv6)               | Dart       | Yes    | Yes    | No     | [01](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-01) |
 | [f4b6a3/uuid-creator](https://github.com/f4b6a3/uuid-creator)                               | Java       | Yes    | No     | No     | [01](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-01) |
@@ -20,7 +21,7 @@ Draft Prototypes and Tests for UUIDv6 and beyond
 | [karwa/uniqueid](https://github.com/karwa/uniqueid)                                         | Swift      | Yes    | No     | No     | [02](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-02) |
 | [mareek/UUIDNext](https://github.com/mareek/UUIDNext)                                       | C#         | Yes    | Yes    | No     | [03](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-03) |
 | [BaerMitUmlaut/GuidPlus](https://github.com/BaerMitUmlaut/GuidPlus)                         | C#         | Yes    | Yes    | Yes    | [02](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-02) |
-| [oittaa/uuid-php](https://github.com/oittaa/uuid-php)                                       | PHP      | Yes    | Yes     | No     | [02](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-02) |
+| [oittaa/uuid-php](https://github.com/oittaa/uuid-php)                                       | PHP      | Yes    | Yes     | No     | [03](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-03) |
 | [jakwings/uuid.sh](https://github.com/jakwings/uuid.sh)                                     | Shell      | Yes    | Yes    | Yes    | [02](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-02) |
 
 *Note: UUIDv8 prototypes will likely vary among implementations*
