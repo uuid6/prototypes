@@ -24,6 +24,7 @@ Draft Prototypes and Tests for UUIDv6 and beyond
 | [BaerMitUmlaut/GuidPlus](https://github.com/BaerMitUmlaut/GuidPlus)                         | C#         | Yes    | Yes    | Yes    | [02](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-02) |
 | [oittaa/uuid-php](https://github.com/oittaa/uuid-php)                                       | PHP      | Yes    | Yes     | No     | [03](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-03) |
 | [jakwings/uuid.sh](https://github.com/jakwings/uuid.sh)                                     | Shell      | Yes    | Yes    | Yes    | [02](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-02) |
+| [LiosK/uuid7-rs](https://github.com/LiosK/uuid7-rs)                                         | Rust       | No     | Yes    | No     | [03](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-03) |
 
 *Note: UUIDv8 prototypes will likely vary among implementations*
 
