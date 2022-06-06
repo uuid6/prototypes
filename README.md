@@ -20,6 +20,7 @@ Draft Prototypes and Tests for UUIDv6 and beyond
 | [LiosK/uuidv7](https://github.com/LiosK/uuidv7)                                             | TypeScript | No     | Yes    | No     | [03](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-03) |
 | [karwa/uniqueid](https://github.com/karwa/uniqueid)                                         | Swift      | Yes    | No     | No     | [02](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-02) |
 | [fabiolimace/UUIDv7_for_C](https://gist.github.com/fabiolimace/9873fe7bbcb1e6dc40638a4f98676d72) | C          | No    | Yes    | No     | [03](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-03) |
+| [LiosK/uuidv7-h](https://github.com/LiosK/uuidv7-h)                                         | C/C++      | No     | Yes    | No     | [03](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-03) |
 | [mareek/UUIDNext](https://github.com/mareek/UUIDNext)                                       | C#         | Yes    | Yes    | No     | [03](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-03) |
 | [BaerMitUmlaut/GuidPlus](https://github.com/BaerMitUmlaut/GuidPlus)                         | C#         | Yes    | Yes    | Yes    | [02](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-02) |
 | [oittaa/uuid-php](https://github.com/oittaa/uuid-php)                                       | PHP      | Yes    | Yes     | No     | [03](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-03) |
