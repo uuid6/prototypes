@@ -7,7 +7,7 @@ Draft Prototypes and Tests for UUIDv6 and beyond
 | [oittaa/uuid6-python](https://github.com/oittaa/uuid6-python)             | Python     | Yes    | Yes    | No    | [04](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-04) |
 | [jdknezek/uuid6-zig](https://github.com/jdknezek/uuid6-zig)                                 | Zig        | Yes    | Yes    | No     | [03](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-03) |
 | [daegalus/uuid/tree/uuid6](https://github.com/Daegalus/dart-uuid/tree/uuidv6)               | Dart       | Yes    | Yes    | Yes    | [03](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-03) |
-| [f4b6a3/uuid-creator](https://github.com/f4b6a3/uuid-creator)                               | Java       | Yes    | No     | No     | [01](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-01) |
+| [f4b6a3/uuid-creator](https://github.com/f4b6a3/uuid-creator)                               | Java       | Yes    | Yes    | No     | [04](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-04) |
 | [chrylis/time-based-uuid-reordering](https://github.com/chrylis/time-based-uuid-reordering) | Java       | Yes    | No     | No     | [01](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-01) |
 | [mikemix/php-uuid-v6](https://github.com/mikemix/php-uuid-v6)                               | PHP        | Yes    | No     | No     | [0x](http://gh.peabody.io/uuidv6/)                                          |
 | [kurttheviking/uuid-with-v6-js](https://github.com/kurttheviking/uuid-with-v6-js)           | JavaScript | Yes    | No     | No     | [0x](http://gh.peabody.io/uuidv6/)                                          |
