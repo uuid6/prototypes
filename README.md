@@ -26,6 +26,7 @@ Draft Prototypes and Tests for UUIDv6 and beyond
 | [oittaa/uuid-php](https://github.com/oittaa/uuid-php)                                       | PHP      | Yes    | Yes     | No     | [04](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-04) |
 | [LiosK/uuid7-rs](https://github.com/LiosK/uuid7-rs)                                         | Rust       | No     | Yes    | No     | [04](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-04) |
 | [jakwings/uuid.sh](https://github.com/jakwings/uuid.sh)                                     | Shell      | Yes    | Yes    | Yes    | [04](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-04) |
+| [DianaNites/nuuid](https://github.com/DianaNites/nuuid)                                     | Rust       | Yes    | Yes    | Yes    | [04](https://tools.ietf.org/html/draft-peabody-dispatch-new-uuid-format-04) |
 
 *Note: UUIDv8 prototypes will likely vary among implementations*
 
