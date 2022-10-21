@@ -8,7 +8,7 @@ Draft Prototypes and Tests for UUIDv6 and beyond
 | [jdknezek/uuid6-zig](https://github.com/jdknezek/uuid6-zig)                                      | Zig        | Yes    | Yes    | No     | [03][03]  |
 | [daegalus/uuid/tree/uuid6](https://github.com/Daegalus/dart-uuid/tree/uuidv6)                    | Dart       | Yes    | Yes    | Yes    | [04][04]  |
 | [f4b6a3/uuid-creator](https://github.com/f4b6a3/uuid-creator)                                    | Java       | Yes    | Yes    | No     | [04][04]  |
-| [chrylis/time-based-uuid-reordering](https://github.com/chrylis/time-based-uuid-reordering)      | Java       | Yes    | No     | No     | [01][01]  |
+| [chrylis/time-based-uuid-reordering](https://github.com/chrylis/time-based-uuid-reordering)      | Java       | Yes    | No     | No     | [04][04]  |
 | [mikemix/php-uuid-v6](https://github.com/mikemix/php-uuid-v6)                                    | PHP        | Yes    | No     | No     | [0x][0x]  |
 | [oittaa/uuid-php](https://github.com/oittaa/uuid-php)                                            | PHP        | Yes    | Yes    | No     | [04][04]  |
 | [symfony/uid](https://github.com/symfony/uid/tree/6.2)                                           | PHP        | Yes    | Yes    | Yes    | [04][04]  |
