@@ -25,6 +25,7 @@ Draft Prototypes and Tests for UUIDv6 and beyond
 | [LiosK/uuidv7-h](https://github.com/LiosK/uuidv7-h)                                              | C/C++      | No     | Yes    | No     | [04][04]  |
 | [mareek/UUIDNext](https://github.com/mareek/UUIDNext)                                            | C#         | Yes    | Yes    | No     | [03][03]  |
 | [BaerMitUmlaut/GuidPlus](https://github.com/BaerMitUmlaut/GuidPlus)                              | C#         | Yes    | Yes    | Yes    | [02][02]  |
+| [Medo/Uuid7](https://github.com/medo64/Medo.Uuid7)                                               | C#         | No    |  Yes    | No     | [04][04]  |
 | [LiosK/uuid7-rs](https://github.com/LiosK/uuid7-rs)                                              | Rust       | No     | Yes    | No     | [04][04]  |
 | [DianaNites/nuuid](https://github.com/DianaNites/nuuid)                                          | Rust       | Yes    | Yes    | Yes    | [04][04]  |
 | [jakwings/uuid.sh](https://github.com/jakwings/uuid.sh)                                          | Shell      | Yes    | Yes    | Yes    | [04][04]  |
