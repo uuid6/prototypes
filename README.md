@@ -23,7 +23,7 @@ Draft Prototypes and Tests for UUIDv6 and beyond
 | [karwa/uniqueid](https://github.com/karwa/uniqueid)                                              | Swift      | Yes    | No     | No     | [02][02]  |
 | [fabiolimace/UUIDv7_for_C](https://gist.github.com/fabiolimace/9873fe7bbcb1e6dc40638a4f98676d72) | C          | No     | Yes    | No     | [03][03]  |
 | [LiosK/uuidv7-h](https://github.com/LiosK/uuidv7-h)                                              | C/C++      | No     | Yes    | No     | [04][04]  |
-| [mareek/UUIDNext](https://github.com/mareek/UUIDNext)                                            | C#         | Yes    | Yes    | No     | [03][03]  |
+| [mareek/UUIDNext](https://github.com/mareek/UUIDNext)                                            | C#         | Yes    | Yes    | Yes     | [04][04]  |
 | [BaerMitUmlaut/GuidPlus](https://github.com/BaerMitUmlaut/GuidPlus)                              | C#         | Yes    | Yes    | Yes    | [02][02]  |
 | [LiosK/uuid7-rs](https://github.com/LiosK/uuid7-rs)                                              | Rust       | No     | Yes    | No     | [04][04]  |
 | [DianaNites/nuuid](https://github.com/DianaNites/nuuid)                                          | Rust       | Yes    | Yes    | Yes    | [04][04]  |
