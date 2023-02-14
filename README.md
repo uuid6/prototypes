@@ -1,3 +1,6 @@
+# Update
+FYI: Draft 04 has been replaced by https://datatracker.ietf.org/doc/html/draft-ietf-uuidrev-rfc4122bis
+
 # Prototypes
 Draft Prototypes and Tests for UUIDv6 and beyond
 
@@ -29,6 +32,7 @@ Draft Prototypes and Tests for UUIDv6 and beyond
 | [LiosK/uuid7-rs](https://github.com/LiosK/uuid7-rs)                                              | Rust       | No     | Yes    | No     | [04][04]  |
 | [DianaNites/nuuid](https://github.com/DianaNites/nuuid)                                          | Rust       | Yes    | Yes    | Yes    | [04][04]  |
 | [jakwings/uuid.sh](https://github.com/jakwings/uuid.sh)                                          | Shell      | Yes    | Yes    | Yes    | [04][04]  |
+| [x4m/pg_uuid_next](https://github.com/x4m/pg_uuid_next)                                          | C          | No    | Yes    | Yes    | [04][04]  |
 
 *Note: UUIDv8 prototypes will likely vary among implementations*
 
