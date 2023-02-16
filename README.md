@@ -1,6 +1,20 @@
 # Update
 FYI: Draft 04 has been replaced by https://datatracker.ietf.org/doc/html/draft-ietf-uuidrev-rfc4122bis
 
+```
+Name:		draft-ietf-uuidrev-rfc4122bis
+Revision:	02
+Title:		A Universally Unique IDentifier (UUID) URN Namespace
+Document date:	2023-02-16
+Group:		uuidrev
+Pages:		47
+URL:            https://www.ietf.org/archive/id/draft-ietf-uuidrev-rfc4122bis-02.txt
+Status:         https://datatracker.ietf.org/doc/draft-ietf-uuidrev-rfc4122bis/
+Html:           https://www.ietf.org/archive/id/draft-ietf-uuidrev-rfc4122bis-02.html
+Htmlized:       https://datatracker.ietf.org/doc/html/draft-ietf-uuidrev-rfc4122bis
+Diff:           https://author-tools.ietf.org/iddiff?url2=draft-ietf-uuidrev-rfc4122bis-02
+```
+
 # Prototypes
 Draft Prototypes and Tests for UUIDv6 and beyond
 
