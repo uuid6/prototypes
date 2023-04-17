@@ -47,6 +47,7 @@ Draft Prototypes and Tests for UUIDv6 and beyond
 | [DianaNites/nuuid](https://github.com/DianaNites/nuuid)                                          | Rust       | Yes    | Yes    | Yes    | [draft-peabody-dispatch-new-uuid-format-04][draft-peabody-dispatch-new-uuid-format-04]  |
 | [jakwings/uuid.sh](https://github.com/jakwings/uuid.sh)                                          | Shell      | Yes    | Yes    | Yes    | [draft-peabody-dispatch-new-uuid-format-04][draft-peabody-dispatch-new-uuid-format-04]  |
 | [x4m/pg_uuid_next](https://github.com/x4m/pg_uuid_next)                                          | C          | No     | Yes    | Yes    | [draft-peabody-dispatch-new-uuid-format-04][draft-peabody-dispatch-new-uuid-format-04]  |
+| [pluots/udf-suite](https://github.com/pluots/udf-suite/tree/main)                                | MariaDB/MySQL | Yes    | Yes    | No     | [draft-peabody-dispatch-new-uuid-format-04][draft-peabody-dispatch-new-uuid-format-04]  |
 
 *Note: UUIDv8 prototypes will likely vary among implementations*
 
