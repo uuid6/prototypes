@@ -21,6 +21,7 @@ Draft Prototypes and Tests for UUIDv6 and beyond
 |--------------------------------------------------------------------------------------------------|------------|--------|--------|--------|-----------|
 | [uuid6/prototypes/python](https://github.com/uuid6/prototypes/tree/main/python)                  | Python     | Yes    | Yes    | Yes    | [draft-peabody-dispatch-new-uuid-format-02][draft-peabody-dispatch-new-uuid-format-02]  |
 | [oittaa/uuid6-python](https://github.com/oittaa/uuid6-python)                                    | Python     | Yes    | Yes    | Yes    | [draft-ietf-uuidrev-rfc4122bis-02][draft-ietf-uuidrev-rfc4122bis-02]  |
+| [quwac/newnewid-python](https://github.com/quwac/newnewid-python)                                | Python     | Yes    | Yes    | Yes    | [draft-ietf-uuidrev-rfc4122bis-03][draft-ietf-uuidrev-rfc4122bis-03] and all below |
 | [jdknezek/uuid6-zig](https://github.com/jdknezek/uuid6-zig)                                      | Zig        | Yes    | Yes    | No     | [draft-peabody-dispatch-new-uuid-format-03][draft-peabody-dispatch-new-uuid-format-03]  |
 | [daegalus/dart-uuid](https://github.com/Daegalus/dart-uuid)                                      | Dart       | Yes    | Yes    | Yes    | [draft-peabody-dispatch-new-uuid-format-04][draft-peabody-dispatch-new-uuid-format-04]  |
 | [f4b6a3/uuid-creator](https://github.com/f4b6a3/uuid-creator)                                    | Java       | Yes    | Yes    | No     | [draft-peabody-dispatch-new-uuid-format-04][draft-peabody-dispatch-new-uuid-format-04]  |
