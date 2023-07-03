@@ -42,6 +42,7 @@ Draft Prototypes and Tests for UUIDv6 and beyond
 | [LiosK/uuidv7-h](https://github.com/LiosK/uuidv7-h)                                              | C/C++      | No     | Yes    | No     | [draft-peabody-dispatch-new-uuid-format-04][draft-peabody-dispatch-new-uuid-format-04]  |
 | [mareek/UUIDNext](https://github.com/mareek/UUIDNext)                                            | C#         | Yes    | Yes    | Yes    | [draft-peabody-dispatch-new-uuid-format-04][draft-peabody-dispatch-new-uuid-format-04]  |
 | [BaerMitUmlaut/GuidPlus](https://github.com/BaerMitUmlaut/GuidPlus)                              | C#         | Yes    | Yes    | Yes    | [draft-peabody-dispatch-new-uuid-format-02][draft-peabody-dispatch-new-uuid-format-02]  |
+| [bgrainger/NGuid](https://github.com/bgrainger/NGuid)                                            | C#         | Yes    | Yes    | Yes    | [draft-ietf-uuidrev-rfc4122bis-07][draft-ietf-uuidrev-rfc4122bis-07]                         |
 | [Medo/Uuid7](https://github.com/medo64/Medo.Uuid7)                                               | C#         | No     |  Yes   | No     | [draft-peabody-dispatch-new-uuid-format-04][draft-peabody-dispatch-new-uuid-format-04]  |
 | [uuid-rs/uuid](https://github.com/uuid-rs/uuid)                                                  | Rust       | Yes    | Yes    | Yes    | [draft-peabody-dispatch-new-uuid-format-04][draft-peabody-dispatch-new-uuid-format-04]  |
 | [LiosK/uuid7-rs](https://github.com/LiosK/uuid7-rs)                                              | Rust       | No     | Yes    | No     | [draft-ietf-uuidrev-rfc4122bis-02][draft-ietf-uuidrev-rfc4122bis-02]  |
@@ -72,3 +73,4 @@ Please include:
 [draft-ietf-uuidrev-rfc4122bis-01]: https://tools.ietf.org/html/draft-ietf-uuidrev-rfc4122bis-01
 [draft-ietf-uuidrev-rfc4122bis-02]: https://tools.ietf.org/html/draft-ietf-uuidrev-rfc4122bis-02
 [draft-ietf-uuidrev-rfc4122bis-03]: https://tools.ietf.org/html/draft-ietf-uuidrev-rfc4122bis-03
+[draft-ietf-uuidrev-rfc4122bis-07]: https://tools.ietf.org/html/draft-ietf-uuidrev-rfc4122bis-07
