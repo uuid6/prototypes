@@ -50,6 +50,8 @@ Draft Prototypes and Tests for UUIDv6 and beyond
 | [jakwings/uuid.sh](https://github.com/jakwings/uuid.sh)                                          | Shell      | Yes    | Yes    | Yes    | [draft-peabody-dispatch-new-uuid-format-04][draft-peabody-dispatch-new-uuid-format-04]  |
 | [x4m/pg_uuid_next](https://github.com/x4m/pg_uuid_next)                                          | C          | No     | Yes    | Yes    | [draft-peabody-dispatch-new-uuid-format-04][draft-peabody-dispatch-new-uuid-format-04]  |
 | [pluots/udf-suite](https://github.com/pluots/udf-suite/tree/main)                                | MariaDB/MySQL | Yes    | Yes    | No     | [draft-peabody-dispatch-new-uuid-format-04][draft-peabody-dispatch-new-uuid-format-04]  |
+| [danielmarschall/uuid_mac_utils](https://github.com/danielmarschall/uuid_mac_utils/)             | PHP        | Yes    | Yes    | Yes    | [draft-ietf-uuidrev-rfc4122bis-08][draft-ietf-uuidrev-rfc4122bis-08]  |
+| [ramsey/uuid](https://github.com/ramsey/uuid/)                                                   | PHP        | Yes    | Yes    | Yes    | [draft-ietf-uuidrev-rfc4122bis-00][draft-ietf-uuidrev-rfc4122bis-00] ?  |
 
 *Note: UUIDv8 prototypes will likely vary among implementations*
 
@@ -74,3 +76,4 @@ Please include:
 [draft-ietf-uuidrev-rfc4122bis-02]: https://tools.ietf.org/html/draft-ietf-uuidrev-rfc4122bis-02
 [draft-ietf-uuidrev-rfc4122bis-03]: https://tools.ietf.org/html/draft-ietf-uuidrev-rfc4122bis-03
 [draft-ietf-uuidrev-rfc4122bis-07]: https://tools.ietf.org/html/draft-ietf-uuidrev-rfc4122bis-07
+[draft-ietf-uuidrev-rfc4122bis-08]: https://tools.ietf.org/html/draft-ietf-uuidrev-rfc4122bis-08
